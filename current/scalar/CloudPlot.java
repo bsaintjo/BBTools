@@ -766,15 +766,15 @@ public class CloudPlot {
 		String xLabel=getMetricName(order[0]);
 		String xMinLabel=String.format("%s: %.2f", xLabel, xmin);
 		String xMaxLabel=String.format("%.2f", xmax);
-		// g.drawString(xMinLabel, margin, height-margin/4);
-		// g.drawString(xMaxLabel, width-margin-50*(int)scale, height-margin/4);
+		g.drawString(xMinLabel, margin, height-margin/4);
+		g.drawString(xMaxLabel, width-margin-50*(int)scale, height-margin/4);
 
 		// Y-axis labels
 		String yLabel=getMetricName(order[1]);
 		String yMinLabel=String.format("%s: %.2f", yLabel, ymin);
 		String yMaxLabel=String.format("%.2f", ymax);
-		// g.drawString(yMinLabel, margin/4, height-margin+15*(int)scale);
-		// g.drawString(yMaxLabel, margin/4, margin+15*(int)scale);
+		g.drawString(yMinLabel, margin/4, height-margin+15*(int)scale);
+		g.drawString(yMaxLabel, margin/4, margin+15*(int)scale);
 	}
 
 	/** Get human-readable name for a metric */
