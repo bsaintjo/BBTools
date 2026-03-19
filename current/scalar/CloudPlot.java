@@ -752,6 +752,12 @@ public class CloudPlot {
 
 	/** Draw axis labels showing min/max values */
 	private void drawAxisLabels(Graphics2D g, int width, int height, int margin){
+		System.setProperty("java.awt.headless", "true");
+		System.setProperty("sun.java2d.renderer", "sun.java2d.marlin.MarlinRenderingEngine");
+		System.setProperty("sun.java2d.noddraw", "true");
+		System.setProperty("sun.java2d.opengl", "false");
+		System.setProperty("sun.java2d.xrender", "false");
+
 		g.setColor(Color.WHITE);
 		java.awt.Font font=new java.awt.Font("SansSerif", java.awt.Font.PLAIN, (int)(12*scale));
 		g.setFont(font);
@@ -760,15 +766,15 @@ public class CloudPlot {
 		String xLabel=getMetricName(order[0]);
 		String xMinLabel=String.format("%s: %.2f", xLabel, xmin);
 		String xMaxLabel=String.format("%.2f", xmax);
-		g.drawString(xMinLabel, margin, height-margin/4);
-		g.drawString(xMaxLabel, width-margin-50*(int)scale, height-margin/4);
+		// g.drawString(xMinLabel, margin, height-margin/4);
+		// g.drawString(xMaxLabel, width-margin-50*(int)scale, height-margin/4);
 
 		// Y-axis labels
 		String yLabel=getMetricName(order[1]);
 		String yMinLabel=String.format("%s: %.2f", yLabel, ymin);
 		String yMaxLabel=String.format("%.2f", ymax);
-		g.drawString(yMinLabel, margin/4, height-margin+15*(int)scale);
-		g.drawString(yMaxLabel, margin/4, margin+15*(int)scale);
+		// g.drawString(yMinLabel, margin/4, height-margin+15*(int)scale);
+		// g.drawString(yMaxLabel, margin/4, margin+15*(int)scale);
 	}
 
 	/** Get human-readable name for a metric */
