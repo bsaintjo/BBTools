@@ -1,12 +1,15 @@
 package scalar;
 
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.Graphics2D;
 import java.awt.Shape;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Ellipse2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.io.PrintStream;
 import java.util.HashMap;
 
@@ -752,14 +755,13 @@ public class CloudPlot {
 
 	/** Draw axis labels showing min/max values */
 	private void drawAxisLabels(Graphics2D g, int width, int height, int margin){
-		System.setProperty("java.awt.headless", "true");
-		System.setProperty("sun.java2d.renderer", "sun.java2d.marlin.MarlinRenderingEngine");
-		System.setProperty("sun.java2d.noddraw", "true");
-		System.setProperty("sun.java2d.opengl", "false");
-		System.setProperty("sun.java2d.xrender", "false");
-
 		g.setColor(Color.WHITE);
 		java.awt.Font font=new java.awt.Font("SansSerif", java.awt.Font.PLAIN, (int)(12*scale));
+		try {
+			font = Font.createFont(Font.TRUETYPE_FONT, new File("resources/DejaVuSans.ttf"))
+					.deriveFont(Font.PLAIN, 24f);
+		} catch (FontFormatException | IOException e) {
+		}
 		g.setFont(font);
 
 		// X-axis labels
